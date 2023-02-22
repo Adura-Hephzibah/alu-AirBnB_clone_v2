@@ -42,9 +42,9 @@ class BaseModel:
                 if hasattr(self, key) and key != "__class__":
                     setattr(self, key, value)
 
-            # if '__class__' in kwargs:
-            #     del kwargs['__class__']
-            # self.__dict__.update(kwargs)
+            if '__class__' in kwargs:
+                del kwargs['__class__']
+            self.__dict__.update(kwargs)
 
     def __str__(self):
         """Returns a string representation of the instance"""
@@ -61,16 +61,16 @@ class BaseModel:
     def to_dict(self):
         """Convert instance into dict format"""
         my_dict = dict(self.__dict__)
-        # for key in self.__dict__.keys():
-        #     if key == "_sa_instance_state":
-        #         del (my_dict[key])
+        for key in self.__dict__.keys():
+            if key == "_sa_instance_state":
+                del (my_dict[key])
 
         # my_dict["__class__"] = str(type(self).__name__)
         my_dict.update({'__class__': self.__class__.__name__})
         my_dict["updated_at"] = self.updated_at.isoformat()
         my_dict["created_at"] = self.created_at.isoformat()
-        if hasattr(self, "_sa_instance_state"):
-            del my_dict["_sa_instance_state"]
+        # if hasattr(self, "_sa_instance_state"):
+        #     del my_dict["_sa_instance_state"]
 
         return my_dict
 
