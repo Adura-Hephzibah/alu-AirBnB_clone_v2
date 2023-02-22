@@ -40,7 +40,7 @@ class test_DBStorage(unittest.TestCase):
     def test_city(self):
         """test"""
         city = City(name='SanDiego')
-        new_state = State()
+        new_state = State(name="CA")
         new_state.save()
         city.state_id = new_state.id
         city.save()
