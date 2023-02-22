@@ -30,6 +30,7 @@ class FileStorage:
         else:
             key = f"{obj.__class__.__name__}.{obj.id}"
             del self.__objects[key]
+            self.save()
 
     def save(self):
         """Saves storage dictionary to file"""
