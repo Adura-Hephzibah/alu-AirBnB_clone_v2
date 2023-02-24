@@ -50,8 +50,12 @@ class test_console(unittest.TestCase):
             city_id = self.buffer.getvalue()[:-1]
         with patch('sys.stdout', self.buffer):
             self.console.onecmd(
-                'create User email="my@me.com" password="pwd" first_name="FN" last_name="LN"')
+                'create User email="my@me.com" password="pwd" first_name="FN"')
             user_id = self.buffer.getvalue()[:-1]
             # self.console.onecmd(
-            #     'create Place city_id={} user_id={} name="My_house" description="no_description_yet" number_rooms=4 number_bathrooms=1 max_guest=3 price_by_night=100 latitude=120.12 longitude=101.4'.format(city_id, user_id))
+            #     'create Place city_id={} user_id={} name="My_house"\
+            #         description="no_description_yet" number_rooms=4\
+            #         number_bathrooms=1 max_guest=3 price_by_night=100\
+            #             latitude=120.12 longitude=101.4'.format(
+            #         city_id, user_id))
             self.assertTrue(len(state_id) == 36)
