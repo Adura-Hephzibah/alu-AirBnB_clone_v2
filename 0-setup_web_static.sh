@@ -2,6 +2,7 @@
 # sets up your web servers for the deployment of web_static
 
 LOCATION_VAR="location /hbnb_static/ {\nalias /data/web_static/current/;\n}\n"
+TARGET="location /"
 
 # Install Nginx if it not already installed
 sudo apt-get -y update
@@ -22,7 +23,7 @@ sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown  -R ubuntu:ubuntu /data/
 
 # Update the Nginx configuration to serve the content of /data/web_static/current/ to hbnb_static
-sed -ri "s/location\s/$LOCATION_VAR/" /etc/nginx/sites-available/default
+sed -ri "s/$TARGET/$LOCATION_VAR/" /etc/nginx/sites-available/default
 
 # restart Nginx after updating the configuration
 sudo service nginx start
