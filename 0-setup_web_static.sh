@@ -2,7 +2,7 @@
 # sets up your web servers for the deployment of web_static
 
 LOCATION_VAR="location /hbnb_static/ {\nalias /data/web_static/current/;\n}\n"
-TARGET="location\s.\/"
+TARGET="location\s*\/"
 
 # Install Nginx if it not already installed
 sudo apt-get -y update
