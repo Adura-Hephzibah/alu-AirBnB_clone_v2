@@ -2,9 +2,12 @@
 """
 Module
 """
-from fabric.api import put, run, local
+from fabric.api import *
 from time import strftime
 import os.path
+
+env.user = 'ubuntu'
+env.hosts = ['54.227.185.147', '54.242.168.1']
 
 
 def do_pack():

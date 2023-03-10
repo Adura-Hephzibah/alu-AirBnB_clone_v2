@@ -10,7 +10,13 @@ sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 
 # Create a fake HTML file /data/web_static/releases/test/index.html
-echo "Fake HTML file" | sudo tee /data/web_static/releases/test/index.html
+echo "<html>
+    <head>
+    </head>
+    <body>
+        Fake School
+    </body>
+</html>" | sudo tee /data/web_static/releases/test/index.html
 
 # Create a symbolic link /data/web_static/current linked to the /data/web_static/releases/test/ folder.
 # If the symbolic link already exists, it should be deleted and recreated every time the script is ran.
@@ -23,4 +29,4 @@ chown  -R ubuntu:ubuntu /data/
 sed -ri "55i location /hbnb_static/ {\nalias /data/web_static/current/;\n}\n" /etc/nginx/sites-available/default
 
 # restart Nginx after updating the configuration
-sudo service nginx start
+sudo service nginx restart

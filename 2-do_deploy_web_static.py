@@ -2,8 +2,11 @@
 """
 Module
 """
-from fabric.api import put, run
+from fabric.api import put, run, env
 import os.path
+
+env.user = 'ubuntu'
+env.hosts = ['54.227.185.147', '54.242.168.1']
 
 
 def do_deploy(archive_path):
