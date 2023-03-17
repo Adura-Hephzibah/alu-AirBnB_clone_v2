@@ -87,3 +87,7 @@ class DBStorage:
         session_tory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_tory)
         self.__session = Session()
+
+    def close(self):
+        """"""
+        self.__session.close()
