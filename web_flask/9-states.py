@@ -27,7 +27,7 @@ def states_list():
                            states=storage.all('State').values())
 
 
-@app.route('/<id>', strict_slashes=False)
+@app.route('states/<id>', strict_slashes=False)
 def states_id(id):
     """display a HTML page”
     """
